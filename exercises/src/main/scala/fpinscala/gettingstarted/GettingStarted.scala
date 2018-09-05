@@ -39,14 +39,10 @@ object MyModule {
   def fib(n: Int): Int = {
     @annotation.tailrec
     def loop(previous: Int, current: Int, n: Int): Int = {
-      if (n <=0) current
+      if (n <= 0) previous
       else loop(current, current + previous, n - 1)
     }
-    val first = 0
-    val second = 1
-    if (n == 0) first
-    else if (n == 1) second
-    else loop(second, first + second, n - 2)
+    loop(0, 1, n)
   }
 
   // This definition and `formatAbs` are very similar..
